@@ -1,0 +1,70 @@
+{
+  "settingsVersion": "1.66",
+  "exclusionRules": [
+    {
+      "pattern": "https?://www.youtube.com/*",
+      "passKeys": "fkjlimN"
+    },
+    {
+      "pattern": "https?://www.tinkoff.ru/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://online.sberbank.ru/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://content.netdevgroup.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://stepik.org/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://www.paypal.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://esia.gosuslugi.ru/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://cloud.digitalocean.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://10.10.10.254/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://10.10.10.254/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://qiwi.com/*",
+      "passKeys": ""
+    },
+    {
+      "pattern": "https?://beginnersbook.com/*",
+      "passKeys": ""
+    }
+  ],
+  "filterLinkHints": false,
+  "waitForEnterForFilteredHints": true,
+  "hideHud": false,
+  "keyMappings": "# Insert your preferred key mappings here.\nunmap j\nunmap k\nunmap l\nunmap ;\nmap k scrollUp\nmap l scrollDown",
+  "linkHintCharacters": "rfvesaqujmphgnb",
+  "linkHintNumbers": "0123456789",
+  "newTabUrl": "about:newtab",
+  "nextPatterns": "next,more,newer,>,›,→,»,≫,>>",
+  "previousPatterns": "prev,previous,back,older,<,‹,←,«,≪,<<",
+  "regexFindMode": true,
+  "ignoreKeyboardLayout": true,
+  "scrollStepSize": 60,
+  "smoothScroll": true,
+  "grabBackFocus": false,
+  "searchEngines": "w: https://www.wikipedia.org/w/index.php?title=Special:Search&search=%s Wikipedia\ng: https://www.google.com/search?q=%s Google\ngm: https://www.google.com/maps?q=%s Google maps\nd: https://duckduckgo.com/?q=%s DuckDuckGo\nfl: http://flibusta.is/booksearch?ask=%s Flibusta\nxv: https://www.xvideos.com/?k=%s xvideos\ny: https://yandex.ru/search/?lr=11430&msid=1555701371.78044.141082.2469&text=%s&suggest_reqid=575843307155548566813643430371841&csg=272%2C1902%2C4%2C6%2C0%2C0%2C0 yandex\ngl: http://gen.lib.rus.ec/search.php?req=%s&lg_topic=libgen&open=0&view=simple&res=25&phrase=1&column=def GenLib\npb: https://www.thepiratebay.org/s/?q=%s&page=0&orderby=99 PirateBay\nym: https://market.yandex.ru/search?cvredirect=2&text= YandexMarket\noz: https://www.ozon.ru/search/?text= Ozon\nten: https://translate.google.com/#view=home&op=translate&sl=en&tl=ru&text= EN->RU Translate\ntru: https://translate.google.com/#view=home&op=translate&sl=ru&tl=en&text= RU->EN Translate \n# az: https://www.amazon.com/s/?field-keywords=%s Amazon\nyt: https://www.youtube.com/results?search_query= YouTube\n\n# qw: https://www.qwant.com/?q=%s Qwant",
+  "searchUrl": "https://www.google.com/search?q=",
+  "userDefinedLinkHintCss": "div > .vimiumHintMarker {\n/* linkhint boxes */\nbackground: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FFF785),\n  color-stop(100%,#FFC542));\nborder: 1px solid #E3BE23;\n}\n\ndiv > .vimiumHintMarker span {\n/* linkhint text */\ncolor: black;\nfont-weight: bold;\nfont-size: 12px;\n}\n\ndiv > .vimiumHintMarker > .matchingCharacter {\n}"
+}

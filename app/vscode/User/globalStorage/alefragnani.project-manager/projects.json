@@ -1,0 +1,16 @@
+[
+	{
+		"name": "Migrators",
+		"rootPath": "/Users/denisdavydov/Desktop/Migrators",
+		"paths": [],
+		"group": "RTK",
+		"enabled": true
+	},
+	{
+		"name": "Dotfiles",
+		"rootPath": "/Users/denisdavydov/.files-config",
+		"paths": [],
+		"group": "SELF_PROJECT",
+		"enabled": true
+	}
+]
