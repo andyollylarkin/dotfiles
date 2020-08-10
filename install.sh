@@ -7,7 +7,7 @@ while true; do
 done 2>/dev/null &
 
 export CURRENT_SYSTEM=$(uname -s);
-export INSTALL_PATH="~/.files-config/"
+export INSTALL_PATH="~/dotfiles/"
 
 # Install Xcode command line tools
 if [ -z "$(xcode-select -p 2>/dev/null)" ]; then

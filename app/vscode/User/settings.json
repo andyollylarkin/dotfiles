@@ -180,4 +180,5 @@
 	"search.searchOnType": false,
 	"explorer.confirmDragAndDrop": false,
 	"window.zoomLevel": 0,
+	"diffEditor.ignoreTrimWhitespace": false,
 }

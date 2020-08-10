@@ -1,6 +1,6 @@
 #!/bin/sh
 # Brew install packages
-apps=(xz-utils htop git youtube-dl tmux wget);
+apps=(xz-utils htop git youtube-dl tmux wget mc);
 if [[ "$(xcode-select -p 2>/dev/null)" == "" ]]; then
 	xcode-select --install;
 else

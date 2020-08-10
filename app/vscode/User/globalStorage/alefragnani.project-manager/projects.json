@@ -8,7 +8,7 @@
 	},
 	{
 		"name": "Dotfiles",
-		"rootPath": "/Users/denisdavydov/.files-config",
+		"rootPath": "/Users/denisdavydov/dotfiles",
 		"paths": [],
 		"group": "SELF_PROJECT",
 		"enabled": true
