@@ -149,6 +149,19 @@
 			79
 		],
 	},
+	// SHELL SCRIPT
+	"[shellscript]": {
+		"files.eol": "\n",
+		"editor.insertSpaces": true,
+		"files.autoGuessEncoding": true,
+		"editor.hover.delay": 300,
+		"editor.renderWhitespace": "none",
+		"editor.hover.enabled": true,
+		"editor.detectIndentation": false,
+		"editor.rulers": [
+			79
+		],
+	},
 	// PHP
 	"[php]": {
 		"editor.tabSize": 4,

@@ -8,10 +8,3 @@ fs_total(){
 	rm /tmp/size_check
 	echo "DONE"
 }
-
-mk_slink(){
-	local sourse=""
-	local destination=""
-
-
-}
