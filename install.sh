@@ -43,8 +43,8 @@ if [[ $CURRENT_SYSTEM == "Linux" ]]; then
 	fi
 elif [[ $CURRENT_SYSTEM == "Darwin" ]]; then
 	if [[ $SHELL == "/bin/sh" || "/bin/bash"]]; then
-		"$SHELL" -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/\
-        tools/install.sh)";
+		"$SHELL" -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/\
+        master/tools/install.sh)";
 		chsh -s "/bin/zsh";
 		# source ~/.zshrc
 	fi

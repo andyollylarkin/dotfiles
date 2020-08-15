@@ -18,4 +18,5 @@ brew cask install visual-studio-code;
 brew cask install font-fira-code;
 
 
-brew cleanup;
+brew cleanup --force -s > /dev/nul 2>&1;
+brew cask cleanup > /dev/null 2>&1;

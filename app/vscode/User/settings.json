@@ -168,16 +168,17 @@
 		"editor.insertSpaces": true,
 		"files.autoGuessEncoding": true,
 		"breadcrumbs.showArrays": true,
+		"editor.tabCompletion": "on",
 		"editor.hover.delay": 300,
 		"editor.renderWhitespace": "none",
 		"editor.hover.enabled": true,
 		"editor.detectIndentation": false,
 		"editor.rulers": [
 			79
-		]
+		],
 	},
 	"php.suggest.basic": true,
-	"php.executablePath": "/usr/bin/php",
+	"php.executablePath": "/usr/local/Cellar/php@7.3/7.3.20/bin/php",
 	// linter
 	"python.linting.flake8Enabled": true,
 	"python.linting.lintOnSave": true,
