@@ -1,0 +1,4 @@
+/.idea
+/.vscode
+/app/vscode/User/globalStorage/*
+/app/vscode/User/workspaceStorage/*
