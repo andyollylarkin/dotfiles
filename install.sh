@@ -67,6 +67,7 @@ for link in $slink; do
     ln -s $INSTALL_PATH/$link $HOME/
 done
 
+# Configure if OSX
 if [ $CURRENT_SYSTEM = "Darwin" ]; then
 	"$SHELL" -c "./macos.sh";
 fi
