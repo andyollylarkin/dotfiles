@@ -72,7 +72,15 @@ if [ $CURRENT_SYSTEM = "Darwin" ]; then
 	"$SHELL" -c "./macos.sh";
 fi
 # Configure vscode
-"$SHELL" -c "app/vscode/install_code.sh";
+print "Do you want to install vscode?";
+while true; do
+	read REPLY;
+	case "$REPLY" in
+		y|Y|Yes) "$SHELL" -c "app/vscode/install_code.sh"; break;;
+		n|N|No) break;;
+		*) echo "Pass y|n"; continue;;
+	esac
+done
 
 # Finilize
 unset CURRENT_SYSTEM;
