@@ -8,3 +8,8 @@ fs_total(){
 	rm /tmp/size_check
 	echo "DONE"
 }
+
+clean_trash(){
+	local TRASH=~/.Trash
+	yes "y" | rm -Rif $TRASH/* 2>/dev/null
+}

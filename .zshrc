@@ -35,6 +35,8 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git pip colored-man-pages brew composer debian django docker docker-compose laravel5 osx pep8 pipenv python pyenv rsync sudo virtualenv tmux )
 
+setopt extendedglob
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration

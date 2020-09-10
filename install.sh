@@ -64,7 +64,7 @@ elif [[ $CURRENT_SYSTEM == "Darwin" ]]; then
 declare slink=($(find . -maxdepth 1 -name ".*" -name "*.conf" -not -name .\
 -not -name ".gitignore"));
 for link in $slink; do
-    ln -s $INSTALL_PATH/$link $HOME/
+    ln -s $INSTALL_PATH/$link $HOME/;
 done
 
 # Configure if OSX
@@ -72,7 +72,7 @@ if [ $CURRENT_SYSTEM = "Darwin" ]; then
 	"$SHELL" -c "./macos.sh";
 fi
 # Configure vscode
-print "Do you want to install vscode?";
+print "\033[101mDo you want to install vscode?\033[0m\ny\|n\:";
 while true; do
 	read REPLY;
 	case "$REPLY" in
@@ -87,6 +87,6 @@ unset CURRENT_SYSTEM;
 unset INSTALL_PATH;
 "$SHELL" && source "~/.zshrc";
 echo "\033[96m==========\033[0m\033[5m\033[95mFINISH INSTALL\033[0m\033[96m\
-==========";
+	 ==========";
 sleep 8;
 kill -9 %1;
