@@ -1,5 +1,7 @@
 #System files
 .DS_Store
+
+#IDE
 /.idea
 /.vscode
 /app/vscode/User/globalStorage/*
