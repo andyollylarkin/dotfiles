@@ -1,8 +1,28 @@
+set nu
+set ignorecase
+set smartcase
+set autoindent
+set ts=4
+set expandtab
+let python_highlight_all = 1
+syntax enable
+
+
+:noremap j <Left>
+:noremap k <Up>
+:noremap l <Down>
+:noremap ; <Right>
+:map h <Nop>
+:imap jj <Esc>
+vmap j <Left>
+vmap k <Up>
+vmap l <Down>
+vmap ; <Right>
+vmap jj <Esc>
 set ignorecase
 set smartcase
 
 
-unmap <C-t>
 noremap j <Left>
 noremap k <Up>
 noremap l <Down>

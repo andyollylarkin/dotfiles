@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 export PATH=/usr/local/bin:$PATH;
-export PATH=/usr/local/Cellar/php@7.3/7.3.21/bin:$PATH;
+export PATH=/usr/local/Cellar/php/7.4.10/bin:$PATH;
 export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools/;
 export PATH=$PATH:$ANDROID_SDK_ROOT/tools/;
 export HOME=~

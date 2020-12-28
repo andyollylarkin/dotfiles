@@ -11,5 +11,5 @@ fs_total(){
 
 clean_trash(){
 	local TRASH=~/.Trash
-	yes "y" | rm -Rif $TRASH/* 2>/dev/null
+	echo "y" | rm -Rif $TRASH/* 2>/dev/null
 }

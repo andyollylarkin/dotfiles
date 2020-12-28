@@ -10,10 +10,12 @@ export CURRENT_SYSTEM=$(uname -s);
 export INSTALL_PATH="~/dotfiles"
 
 # Install Xcode command line tools
-if [ -z "$(xcode-select -p 2>/dev/null)" ]; then
+if [[ $CURRENT_SYSTEM == "Darwin" ]]; then
+    if [ -z "$(xcode-select -p 2>/dev/null)" ]; then
 	xcode-select --install;
-else
+    else
 	echo "\033[101mXcode Command Line Tools already installed";
+    fi
 fi
 # Install homebrew 
 if [[ $CURRENT_SYSTEM == "Darwin" ]]; then
@@ -37,7 +39,7 @@ fi
 if [[ $CURRENT_SYSTEM == "Linux" ]]; then
 	apt-get install zsh -y && "$SHELL" -c "$(curl -fsSL https://raw.github.\
     com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	if ! [ "$CURRENT_SYSTEM" = "/bin/zsh" ]; then
+	if ! [ "$SHELL" = "/bin/zsh" ]; then
 		chsh -s "/bin/zsh";
 		# source ~/.zshrc
 	fi
