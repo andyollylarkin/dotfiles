@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Grand superuser privileges
 while true; do
 	sudo -v;
