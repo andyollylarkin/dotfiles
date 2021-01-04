@@ -29,7 +29,7 @@ if [ $? -eq 0 ]; then
 elif [[ $CURRENT_SYSTEM == "Linux" ]]; then
 	apt-get update && apt-get upgrade -y
 elif [ -z "brew --version" ]; then
-	echo "\033[101mCurrent system not Linux or Brew wasn\'t installed"
+	echo -e "\033[101mCurrent system not Linux or Brew wasn\'t installed\033[0m"
 	sleep 8;
 	exit 1;
 fi

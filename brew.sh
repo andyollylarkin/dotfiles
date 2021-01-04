@@ -2,11 +2,6 @@
 # Brew install packages
 apps=(xz-utils htop git youtube-dl tmux wget mc);
 
-# if [[ "$(xcode-select -p 2>/dev/null)" == "" ]]; then
-# 	xcode-select --install;
-# else
-# 	echo "Xcode Command Line Tools already installed"
-# fi
 brew update;
 brew upgrade;
 brew cask upgrade;
