@@ -62,12 +62,15 @@ elif [[ $CURRENT_SYSTEM == "Darwin" ]]; then
 	rm -Rf /tmp/fonts
 
 
-# Install symlinks for .files
+# Install symlinks
 declare slink=($(find . -maxdepth 1 -name ".*" -name "*.conf" -not -name .\
 -not -name ".gitignore"));
 for link in $slink; do
     ln -s $INSTALL_PATH/$link $HOME/;
 done
+# Midnight Commander symlinks
+ln -s ${HOME}/dotfiles/app/mc ${HOME}/.config/mc;
+ln -s ${HOME}/dotfiles/app/doc.sh /usr/local/Cellar/midnight-commander/*/libexec/mc/ext.d/doc.sh;
 
 # Configure if OSX
 if [ $CURRENT_SYSTEM = "Darwin" ]; then
