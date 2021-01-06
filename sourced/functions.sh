@@ -13,3 +13,28 @@ clean_trash(){
 	local TRASH=~/.Trash
 	echo "y" | rm -Rif $TRASH/* 2>/dev/null
 }
+
+activate_venv(){
+    if [ -z $1 ]
+    then
+        echo -e "\033[101mPass venv path\033[0m";
+    fi
+    export OLD_PS_PROMPT=$PS1;
+
+    if [ -z $VIRTUAL_ENV ]
+    then
+        local VENV_PATH=$1;
+        source $VENV_PATH;
+        PS1="(venv) ${OLD_PS_PROMPT}";
+    fi
+}
+
+deactivate_venv(){
+   if [ ! -z $VIRTUAL_ENV ]
+   then
+       deactivate;
+       PS1=${OLD_PS_PROMPT};
+   fi
+}
+
+        
