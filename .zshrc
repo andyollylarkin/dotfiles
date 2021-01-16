@@ -33,7 +33,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip colored-man-pages brew composer debian django docker docker-compose laravel5 osx pep8 pipenv python pyenv rsync sudo virtualenv tmux )
+plugins=(git pip colored-man-pages brew composer debian django docker docker-compose laravel5 osx pep8 pipenv python pyenv rsync sudo virtualenv)
 
 setopt extendedglob
 
@@ -49,3 +49,9 @@ export ARCHFLAGS="-arch x86_64"
 for sourced in ~/dotfiles/sourced/*; do
 	source $sourced
 done
+export ANDROID_HOME=$HOME/LibAndroid
+export ANDROID_SDK_ROOT=$HOME/LibAndroid
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools

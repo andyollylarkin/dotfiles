@@ -2,6 +2,8 @@
 
 export PATH=/usr/local/bin:$PATH;
 export PATH=/usr/local/Cellar/php/7.4.10/bin:$PATH;
+#Composer
+export PATH=/usr/local/Cellar/composer/1.10.13/bin:$PATH;
 #export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools/;
 #export PATH=$PATH:$ANDROID_SDK_ROOT/tools/;
 if [[ $(uname -s) == "Darwin" ]];

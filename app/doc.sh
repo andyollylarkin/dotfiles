@@ -6,7 +6,13 @@
 action=$1
 filetype=$2
 
-[ -n "${MC_XDG_OPEN}" ] || MC_XDG_OPEN="xdg-open"
+if [[ $(uname -s) == "Linux" ]]
+then
+    [ -n "${MC_XDG_OPEN}" ] || MC_XDG_OPEN="xdg-open"
+else
+    [ -n "${MC_XDG_OPEN}" ] || MC_XDG_OPEN="open"
+fi
+
 
 STAROFFICE_REGEXP='\.(sxw|sdw|stw|sxc|stc|sxi|sti|sxd|std||sxm||sxg)$'
 

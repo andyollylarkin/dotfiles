@@ -162,6 +162,20 @@
 			79
 		],
 	},
+	"[javascript]": {
+		"editor.tabSize": 4,
+		"editor.insertSpaces": true,
+		"files.autoGuessEncoding": true,
+		"breadcrumbs.showArrays": true,
+		"editor.tabCompletion": "on",
+		"editor.hover.delay": 300,
+		"editor.renderWhitespace": "none",
+		"editor.hover.enabled": true,
+		"editor.detectIndentation": false,
+		"editor.rulers": [
+			79
+		],
+	},
 	// PHP
 	"[php]": {
 		"editor.tabSize": 4,

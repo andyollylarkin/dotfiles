@@ -15,17 +15,14 @@ clean_trash(){
 }
 
 activate_venv(){
-    if [ -z $1 ]
+    if [ -z $1 ] && [ -z $VIRTUAL_ENV ]
     then
         echo -e "\033[101mPass venv path\033[0m";
-    fi
-    export OLD_PS_PROMPT=$PS1;
-
-    if [ -z $VIRTUAL_ENV ]
-    then
+    else
+        export OLD_PS_PROMPT=$PS1;
         local VENV_PATH=$1;
         source $VENV_PATH;
-        PS1="(venv) ${OLD_PS_PROMPT}";
+        PS1="(venv):${OLD_PS_PROMPT}";
     fi
 }
 
@@ -36,5 +33,3 @@ deactivate_venv(){
        PS1=${OLD_PS_PROMPT};
    fi
 }
-
-        
