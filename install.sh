@@ -1,94 +1,87 @@
-#!/bin/bash
-# Grand superuser privileges
+#!/bin/zsh
+
+#Grand superuser privileges
 while true; do
 	sudo -v;
 	sleep 300;
 	kill -0 "$$" || exit;
 done 2>/dev/null &
 
-export CURRENT_SYSTEM=$(uname -s);
-export INSTALL_PATH="~/dotfiles"
+declare SYSTEM=$(uname -s);
+declare DOTFILES_PATH="~/dotfiles";
 
-# Install Xcode command line tools
-if [[ $CURRENT_SYSTEM == "Darwin" ]]; then
-    if [ -z "$(xcode-select -p 2>/dev/null)" ]; then
-	xcode-select --install;
-    else
-	echo "\033[101mXcode Command Line Tools already installed";
-    fi
+function s_links(){
+	for target_dir in $2; do
+		for targer_source in $1; do
+
+}
+
+#Install xcode cmd-line tools
+if [[ $SYSTEM == "Darwin" ]]; then
+	if [ -z "$(xcode-select -p 2>/dev/null)" ]; then
+		xcode-select --install;
+	else
+		echo "\033[101mXcode Command Line Tools already installed\033[0m";
+
+	fi
 fi
-# Install homebrew 
-if [[ $CURRENT_SYSTEM == "Darwin" ]]; then
+
+
+if [[ $SYSTEM == "Darwin" ]]; then
+	source ./macos.sh;
+fi
+
+
+
+
+#Install homebrew
+if [ -z "$(brew --version)" ]; then
 	"$SHELL" -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/\
-    install/master/install.sh)"
+								install/master/install.sh)";
+else
+	echo "\033[101mHomebrew already installed\033[0m";
 fi
 
-# Install brew formulae OR update apt
-if [ $? -eq 0 ]; then
-	"$SHELL" -c "./brew.sh";
-elif [[ $CURRENT_SYSTEM == "Linux" ]]; then
-	apt-get update && apt-get upgrade -y
-elif [ -z "brew --version" ]; then
-	echo "\033[101mCurrent system not Linux or Brew wasn\'t installed"
-	sleep 8;
-	exit 1;
+#Install OhMyZsh
+if [[ $SHELL != "/bin/zsh" ]]; then
+	chsh -s "/bin/zsh";
+	"$SHELL" -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/\
+ 								master/tools/install.sh)";
+else
+	"$SHELL" -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/\
+ 								master/tools/install.sh)";
 fi
 
+#Install PowerLine fonts
+git clone https://github.com/powerline/fonts.git --depth=1 /tmp/fonts\
+	&& chmod u+rwx /tmp/fonts/install.sh;
+"$SHELL" -c "/tmp/fonts/install.sh";
+rm -Rf /tmp/fonts;
 
-# Install ZSH
-if [[ $CURRENT_SYSTEM == "Linux" ]]; then
-	apt-get install zsh -y && "$SHELL" -c "$(curl -fsSL https://raw.github.\
-    com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-	if ! [ "$SHELL" = "/bin/zsh" ]; then
-		chsh -s "/bin/zsh";
-		# source ~/.zshrc
-	fi
-elif [[ $CURRENT_SYSTEM == "Darwin" ]]; then
-	if [[ $SHELL == "/bin/sh" || "/bin/bash"]]; then
-		"$SHELL" -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/\
-        master/tools/install.sh)";
-		chsh -s "/bin/zsh";
-		# source ~/.zshrc
-	fi
+
+if [[ $SYSTEM == "Darwin" ]]; then
+	source ./brew.sh;
+	brew_install_app;
 fi
 
-# Install powerline font
-if [[ $CURRENT_SYSTEM == "Linux" ]]; then
-	apt-get install -y fonts-powerline
-elif [[ $CURRENT_SYSTEM == "Darwin" ]]; then
-	git clone https://github.com/powerline/fonts.git --depth=1 /tmp/fonts\
-     && chmod u+rwx /tmp/fonts/install.sh;
-	"$SHELL" -c "/tmp/fonts/install.sh"
-	rm -Rf /tmp/fonts
-
-
-# Install symlinks for .files
-declare slink=($(find . -maxdepth 1 -name ".*" -name "*.conf" -not -name .\
--not -name ".gitignore"));
-for link in $slink; do
-    ln -s $INSTALL_PATH/$link $HOME/;
+#Install symlinks
+declare dotfiles=($(ls -a|grep -Ev "(^\.git|\.swp$)"|grep -E "(^\.\w+|\w+\.conf)"));
+for file in $dotfiles[@]; do
+    ln -s $DOTFILES_PATH/"$file" $HOME/"$file";
 done
 
-# Configure if OSX
-if [ $CURRENT_SYSTEM = "Darwin" ]; then
-	"$SHELL" -c "./macos.sh";
-fi
-# Configure vscode
-print "\033[101mDo you want to install vscode?\033[0m\ny\|n\:";
-while true; do
-	read REPLY;
-	case "$REPLY" in
-		y|Y|Yes) "$SHELL" -c "app/vscode/install_code.sh"; break;;
-		n|N|No) break;;
-		*) echo "Pass y|n"; continue;;
-	esac
-done
+# Declare array of command for make slink for applicatons config
+declare mk_link_path=(
+	"ln -s $DOTFILES_PATH/app/mc $HOME/.config/mc"
+);
+for command in $soft_conf_path[@]; do
+	$SHELL -c $command; 
 
-# Finilize
-unset CURRENT_SYSTEM;
-unset INSTALL_PATH;
-"$SHELL" && source "~/.zshrc";
-echo "\033[96m==========\033[0m\033[5m\033[95mFINISH INSTALL\033[0m\033[96m\
-	 ==========";
+
+#Finilize
+unset SYSTEM;
+unset ISNTALL_PATH;
+source "~/.zshrc";
+echo "\033[96m==========\033[0m\033[5m\033[95mFINISH INSTALL\033[0m\033[96m\==========";
 sleep 8;
 kill -9 %1;
