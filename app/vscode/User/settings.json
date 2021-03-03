@@ -2,7 +2,7 @@
 	// GENERAL
 	"telemetry.enableTelemetry": false,
 	"telemetry.enableCrashReporter": false,
-	"window.title": "HomeSapling",
+	"window.title": "DevHub - Denis Davydov",
 	"window.titleBarStyle": "custom", // Title bar will change color to match the color theme
 	"window.closeWhenEmpty": false,
 	"explorer.confirmDelete": false,
@@ -18,10 +18,13 @@
 	"workbench.startupEditor": "none",
 	"workbench.activityBar.visible": true, // to the right of the sidebar
 	"workbench.colorCustomizations": {
-		"statusBar.background": "#00ff00",
+		"statusBar.background": "#f57e7e",
 		"statusBar.noFolderBackground": "#00ff00",
 		"statusBar.debuggingBackground": "#00ff00",
-		"statusBar.foreground": "#000000"
+		"statusBar.foreground": "#000000",
+		// "statusBarItem.prominentBackground": "#ff0000",
+		// "statusBarItem.activeBackground": "#ff0000",
+		"statusBarItem.hoverBackground": "#315f72"
 	},
 	// EDITOR
 	"editor.fontSize": 13,
@@ -39,6 +42,12 @@
 	"editor.formatOnSave": true,
 	// VIM
 	"vim.cursorStylePerMode.normal": "block",
+	"vim.hlsearch": true,
+	"vim.searchHighlightColor": "#e52165",
+	"vim.searchHighlightTextColor": "#ffffff",
+	"vim.ignorecase": true,
+	// Fix automatic unfold when move across folded text
+	"vim.foldfix": true,
 	// VIM KEYBINDINGS
 	"vim.normalModeKeyBindings": [
 		{
@@ -85,6 +94,16 @@
 			]
 		},
 	],
+	"vim.normalModeKeyBindingsNonRecursive": [
+		{
+			"before": [
+				"<Esc>"
+			],
+			"commands": [
+				":noh"
+			]
+		}
+	],
 	"vim.visualModeKeyBindings": [
 		{
 			"before": [
@@ -94,15 +113,15 @@
 				"Left"
 			]
 		},
-		{
-			"before": [
-				"j",
-				"j"
-			],
-			"after": [
-				"<Esc>"
-			]
-		},
+		// {
+		// 	"before": [
+		// 		"j",
+		// 		"j"
+		// 	],
+		// 	"after": [
+		// 		"<Esc>"
+		// 	]
+		// },
 		{
 			"before": [
 				"k"
@@ -126,7 +145,7 @@
 			"after": [
 				"Right"
 			]
-		}
+		},
 	],
 	// "vim.statusBarColorControl": true, //Enable color control
 	// "vim.statusBarColors.normal": "#00ff00",
@@ -162,7 +181,9 @@
 			79
 		],
 	},
+	// JavaScript
 	"[javascript]": {
+		"files.eol": "\n",
 		"editor.tabSize": 4,
 		"editor.insertSpaces": true,
 		"files.autoGuessEncoding": true,
@@ -175,7 +196,10 @@
 		"editor.rulers": [
 			79
 		],
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
 	},
+	"jshint.config": "/Users/denisdavydov/.jshintrc",
+	"jshint.enable": true,
 	// PHP
 	"[php]": {
 		"editor.tabSize": 4,
@@ -204,10 +228,15 @@
 	// "python.linting.flake8Args": [
 	// 	"--ignore=E702,W391,ANN101",
 	// ],
+	// JS Hint
 	"breadcrumbs.enabled": true,
 	"search.searchOnType": false,
 	"explorer.confirmDragAndDrop": false,
-	"window.zoomLevel": 0,
 	"diffEditor.ignoreTrimWhitespace": false,
 	"python.defaultInterpreterPath": "/usr/local/bin/python3",
+	"liveServer.settings.donotShowInfoMsg": true,
+	"extensions.ignoreRecommendations": true,
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
 }

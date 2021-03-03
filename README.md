@@ -1,4 +1,4 @@
-# My .files
+# My .files for OSX
 
 ## Install
 ```shell

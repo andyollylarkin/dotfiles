@@ -14,7 +14,7 @@ if [[ $CURRENT_SYSTEM == "Darwin" ]]; then
     if [ -z "$(xcode-select -p 2>/dev/null)" ]; then
 	xcode-select --install;
     else
-	echo "\033[101mXcode Command Line Tools already installed";
+	echo "\033[101mXcode Command Line Tools already installed\033[0m";
     fi
 fi
 # Install homebrew 
@@ -63,7 +63,7 @@ elif [[ $CURRENT_SYSTEM == "Darwin" ]]; then
 
 
 # Install symlinks
-declare slink=($(find . -maxdepth 1 -name ".*" -name "*.conf" -not -name .\
+local slink=($(find . -maxdepth 1 -name ".*" -name "*.conf" -not -name .\
 -not -name ".gitignore"));
 for link in $slink; do
     ln -s $INSTALL_PATH/$link $HOME/;
@@ -73,7 +73,7 @@ ln -s ${HOME}/dotfiles/app/mc ${HOME}/.config/mc;
 ln -s ${HOME}/dotfiles/app/doc.sh /usr/local/Cellar/midnight-commander/*/libexec/mc/ext.d/doc.sh;
 
 # Configure if OSX
-if [ $CURRENT_SYSTEM = "Darwin" ]; then
+if [ $CURRENT_SYSTEM == "Darwin" ]; then
 	"$SHELL" -c "./macos.sh";
 fi
 # Configure vscode

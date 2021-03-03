@@ -16,14 +16,29 @@ plugins=(
 	# PKief.material-icon-theme
 	# teabyii.ayu
 	# vscodevim.vim
-    alefragnani.Bookmarks
+    # alefragnani.Bookmarks
+    # alefragnani.project-manager
+    # mads-hartmann.bash-ide-vscode
+    # ms-python.python
+    # ms-toolsai.jupyter
+    # ms-vscode.powershell
+    # msjsdiag.vscode-react-native
+    # PKief.material-icon-theme
+    # teabyii.ayu
+    # vscodevim.vim
+    # alefragnani.Bookmarks
     alefragnani.project-manager
+    christian-kohler.path-intellisense
+    dbaeumer.jshint
+    esbenp.prettier-vscode
     mads-hartmann.bash-ide-vscode
     ms-python.python
     ms-toolsai.jupyter
     ms-vscode.powershell
+    msjsdiag.debugger-for-chrome
     msjsdiag.vscode-react-native
     PKief.material-icon-theme
+    ritwickdey.LiveServer
     teabyii.ayu
     vscodevim.vim
 )
