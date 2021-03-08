@@ -1,6 +1,6 @@
 #!/bin/zsh
 function brew_install_app(){
-	declare apps=(xz htop git youtube-dl wget mc);
+	local apps=(xz htop git youtube-dl wget mc);
 
 	brew update;
 	brew upgrade;
@@ -13,7 +13,7 @@ function brew_install_app(){
 
 	brew tap homebrew/cask-fonts;
 
-	cask_apps=(font-fira-code qbittorrent vlc google-chrome speedcrunch);
+	local cask_apps=(font-fira-code qbittorrent vlc google-chrome speedcrunch);
 
 	for app in $cask_apps; do
 		brew install --cask $app;
