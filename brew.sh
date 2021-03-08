@@ -13,7 +13,7 @@ function brew_install_app(){
 
 	brew tap homebrew/cask-fonts;
 
-	local cask_apps=(font-fira-code qbittorrent vlc google-chrome speedcrunch);
+	local cask_apps=(visual-studio-code font-fira-code qbittorrent vlc google-chrome speedcrunch);
 
 	for app in $cask_apps; do
 		brew install --cask $app;
