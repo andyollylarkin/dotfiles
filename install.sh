@@ -5,15 +5,15 @@ while true; do
 	sudo -v;
 	sleep 300;
 	kill -0 "$$" || exit;
-done 2>/dev/null &
+done 2>/dev/null &;
 
  SYSTEM=$(uname -s);
- DOTFILES_PATH="~/dotfiles";
+ DOTFILES_PATH="${HOME}/dotfiles/";
 
 #Install xcode cmd-line tools
 if [[ $SYSTEM == "Darwin" ]]; then
 	if [ -z "$(xcode-select -p 2>/dev/null)" ]; then
-		xcode-select --install &;
+		xcode-select --install;
 	else
 		echo "\033[101mXcode Command Line Tools already installed\033[0m";
 
@@ -25,27 +25,27 @@ if [[ $SYSTEM == "Darwin" ]]; then
 fi
 
 #Install homebrew
-if [ -z "$(brew --version)" ]; then
-	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/\
-							master/install)";
+if [ -z "$(brew --version 2>/dev/null)" ]; then
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
 else
-	echo "\033[101mHomebrew already installed\033[0m";
+	echo "\033[101mBrew already installed\033[0m";
 fi
+    
 
 #Install OhMyZsh
 if [[ $SHELL != "/bin/zsh" ]]; then
 	chsh -s "/bin/zsh";
-	"$SHELL" -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/\
- 								master/tools/install.sh)";
+	"$SHELL" -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
+	/bin/zsh -c "compaudit | xargs chmod g-w,o-w";
 else
-	"$SHELL" -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/\
- 								master/tools/install.sh)";
+	"$SHELL" -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
+	/bin/zsh -c "compaudit | xargs chmod g-w,o-w";
 fi
 
 #Install PowerLine fonts
 git clone https://github.com/powerline/fonts.git --depth=1 /tmp/fonts\
 	&& chmod u+rwx /tmp/fonts/install.sh;
-"$SHELL" -c "/tmp/fonts/install.sh";
+"$SHELL" -c "/tmp/fonts/install.sh" 2>/dev/null;
 rm -Rf /tmp/fonts;
 
 if [[ $SYSTEM == "Darwin" ]]; then
@@ -64,25 +64,14 @@ while true; do
 	esac
 done
 
-#Install symlinks
-declare dotfiles=($(ls -a|grep -Ev\
-	"(^\.git|\.swp$)"|grep -E "(^\.\w+|\w+\.conf)"));
-for file in $dotfiles[@]; do
-    ln -s $DOTFILES_PATH/"$file" $HOME/"$file";
-done
-
-# Declare array of command for make slink for applicatons config
-declare mk_link_path=(
-	"ln -s $DOTFILES_PATH/app/mc $HOME/.config/mc"
-    "ln -s $DOTFILES_PATH/htoprc $HOME/.config/htop/htoprc"
-);
-for command in $soft_conf_path[@]; do
-	"$SHELL" -c $command; 
+#Install configs
+cd $DOTFILES_PATH/configs;
+rsync -aRvh --exclude=.git --exclude=.gitignore --exclude=.DS_Store . ~;
 
 #Finilize
 unset SYSTEM;
 unset ISNTALL_PATH;
-source "~/.zshrc";
+source ~/.zshrc;
 echo "\033[96m==========\033[0m\033[5m\033[95mFINISH INSTALL\
 	\033[0m\033[96m\==========";
 sleep 8;
