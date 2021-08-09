@@ -33,7 +33,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip colored-man-pages brew composer debian django docker docker-compose laravel5 osx pep8 pipenv python pyenv rsync sudo virtualenv)
+plugins=(git pip colored-man-pages brew composer debian django docker docker-compose pep8 pipenv python pyenv rsync sudo virtualenv)
 
 setopt extendedglob
 

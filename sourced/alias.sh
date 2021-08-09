@@ -1,6 +1,9 @@
 #!/bin/zsh
 
-alias ..="cd .."
+#Directory movement
+alias ..="cd ..";
+alias ~="cd ~";
+
 alias cls="clear"
 alias ydlplist="youtube-dl --yes-playlist -x --audio-format mp3 $1"
 alias ydlmp3="youtube-dl --no-playlist -x --audio-format mp3 $1"

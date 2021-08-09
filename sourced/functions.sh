@@ -13,3 +13,9 @@ clean_trash(){
 	local TRASH=~/.Trash
 	echo "y" | rm -Rif $TRASH/* 2>/dev/null
 }
+
+update_configs(){
+    cd $DOTFILES_PATH/configs; 
+    rsync -aRvh --exclude=.git --exclude=.gitignore --exclude=.DS_Store . ~; 
+}
+

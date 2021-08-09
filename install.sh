@@ -1,45 +1,68 @@
 #!/bin/zsh
 
-#Grand superuser privileges
+#Grant superuser privileges
 while true; do
 	sudo -v;
 	sleep 300;
 	kill -0 "$$" || exit;
 done 2>/dev/null &;
 
- SYSTEM=$(uname -s);
- DOTFILES_PATH="${HOME}/dotfiles/";
+export SYSTEM=$(uname -s);
+export DOTFILES_PATH="${HOME}/dotfiles/";
+export DESTRIBUTOR = lsb_release --id|grep -Eo "(Ubuntu|Debian)";
+set TZ=Europe/Moscow
 
-#Install xcode cmd-line tools
-if [[ $SYSTEM == "Darwin" ]]; then
-	if [ -z "$(xcode-select -p 2>/dev/null)" ]; then
-		xcode-select --install;
-	else
-		echo "\033[101mXcode Command Line Tools already installed\033[0m";
+#Update system
+apt update;
+apt dist-upgrade;
 
-	fi
-fi
+#Install required software
+apt install -y \
+curl \
+apt-transport-https \
+zsh \
+zsh-common \
+net-tools \
+remmina \
+openssh-client \
+openssh-server \
+git \
+lsb_release
 
-if [[ $SYSTEM == "Darwin" ]]; then
-    "$SHELL" -c ./macos.sh;
-fi
 
-#Install homebrew
-if [ -z "$(brew --version 2>/dev/null)" ]; then
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
-else
-	echo "\033[101mBrew already installed\033[0m";
-fi
-    
+if [[ $(cat /etc/os_release|grep --max-count=1 -Eo "(Ubuntu|Debian|LinuxMint)" ]]
+echo "\033[101mInstall vscode?\033[0m";
+while true; do
+    read REPLY;
+        case "$REPLY" in
+    		y|Y|Yes) "$SHELL" <<-EOF
+                wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg;
+                install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/;
+                "$SHELL" -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list';
+                rm -f packages.microsoft.gpg;
+                apt install code;
+            EOF
+    		n|N|No) break;;
+    		*) echo "Pass y|n"; continue;;
+    	esac
+done
+
+
+
+
+#Install timezone
+ln -snf /usr/share/zoneinfo/${TZ} /etc/localtime && echo $TZ > /etc/timezone
+
+
 
 #Install OhMyZsh
 if [[ $SHELL != "/bin/zsh" ]]; then
-	chsh -s "/bin/zsh";
-	"$SHELL" -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
-	/bin/zsh -c "compaudit | xargs chmod g-w,o-w";
+    if [[ -d ~/.oh-my-zsh ]]; then
+        echo "Oh my Zsh already installed";
+        chsh -s "/bin/zsh";
+    fi
 else
 	"$SHELL" -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)";
-	/bin/zsh -c "compaudit | xargs chmod g-w,o-w";
 fi
 
 #Install PowerLine fonts
@@ -48,21 +71,18 @@ git clone https://github.com/powerline/fonts.git --depth=1 /tmp/fonts\
 "$SHELL" -c "/tmp/fonts/install.sh" 2>/dev/null;
 rm -Rf /tmp/fonts;
 
-if [[ $SYSTEM == "Darwin" ]]; then
-	source ./brew.sh;
-	brew_install_app;
+# Configure vscode if exist
+if [[ $(which code) 2>/dev/null ]]; then
+    echo "\033[101mConfigure vscode?\033[0m";
+    while true; do
+        read REPLY;
+        case "$REPLY" in
+    		y|Y|Yes) "$SHELL" -c "${DOTFILES_PATH}configure_vscode.sh"; break;;
+    		n|N|No) break;;
+    		*) echo "Pass y|n"; continue;;
+    	esac
+    done
 fi
-
-# Configure vscode
-echo "\033[101mConfigure vscode?\033[0m";
-while true; do
-    read REPLY;
-    case "$REPLY" in
-		y|Y|Yes) "$SHELL" -c "${HOME}/dotfiles/configure_vscode.sh"; break;;
-		n|N|No) break;;
-		*) echo "Pass y|n"; continue;;
-	esac
-done
 
 #Install configs
 cd $DOTFILES_PATH/configs;

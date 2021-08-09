@@ -1,5 +1,7 @@
 set nu
 set ignorecase
+set title
+set ruler
 set smartcase
 set autoindent
 set ts=4
