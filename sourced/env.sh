@@ -2,6 +2,7 @@
 
 # System independent
 export PATH=/usr/local/bin:$PATH;
+export PATH=/usr/go/bin:$PATH;
 export HOME=~
 export TERM=xterm-256color;
 
